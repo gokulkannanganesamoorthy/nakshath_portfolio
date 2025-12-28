@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Space+Grotesk:wght@300;400;600&display=swap');
+
+/* Design 2 Variables */
+:root {
+    --d2-bg: #000000;
+    --d2-primary: #2DE2E6; /* Electric Blue */
+    --d2-secondary: #FF007F; /* Hot Pink */
+    --d2-text: #ffffff;
+    --d2-font-head: 'Syncopate', sans-serif;
+    --d2-font-body: 'Space Grotesk', sans-serif;
+}
+
+/* Design 2 Scoped Container */
+.design2-container {
+    background-color: var(--d2-bg);
+    color: var(--d2-text);
+    font-family: var(--d2-font-body);
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+.design2-container h1, 
+.design2-container h2, 
+.design2-container h3 {
+    font-family: var(--d2-font-head);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Animations */
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes glitch {
+    0% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+    100% { transform: translate(0); }
+}
+
+.d2-animate-up {
+    animation: slideUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    opacity: 0; 
+    /* Animation delay handled via inline styles in React */
+}
+
+.d2-glitch:hover {
+    animation: glitch 0.3s cubic-bezier(.25, .46, .45, .94) both infinite;
+    color: var(--d2-primary);
+}
+
+/* Utility */
+.d2-text-primary { color: var(--d2-primary); }
+.d2-text-secondary { color: var(--d2-secondary); }
+
+.d2-btn {
+    padding: 1rem 2.5rem;
+    font-family: var(--d2-font-head);
+    font-size: 0.9rem;
+    background: transparent;
+    border: 1px solid var(--d2-primary);
+    color: var(--d2-primary);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.d2-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--d2-primary);
+    transition: all 0.3s ease;
+    z-index: -1;
+}
+
+.d2-btn:hover {
+    color: #000;
+}
+
+.d2-btn:hover::before {
+    left: 0;
+}
